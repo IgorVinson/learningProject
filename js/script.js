@@ -1,46 +1,33 @@
-/* Задание на урок:
+function sayHello(name) {
+    return `Привет, ${name}!`;
+}
+console.log(sayHello('Антон'));
 
-1) Автоматизировать вопросы пользователю про фильмы при помощи цикла
+function returnNeighboringNumbers(num) {
+    let arr = [];
+    for (let i = 0; i < 3; i++) {
+    arr[i] = num - 1;
+    arr[i+1] = num;
+    arr [i+2]=num + 1;
+    break;
+    } return arr;
+}
+console.log(returnNeighboringNumbers(5));
 
-2) Сделать так, чтобы пользователь не мог оставить ответ в виде пустой строки,
-отменить ответ или ввести название фильма длинее, чем 50 символов. Если это происходит - 
-возвращаем пользователя к вопросам опять
-
-3) При помощи условий проверить  personalMovieDB.count, и если он меньше 10 - вывести сообщение
-"Просмотрено довольно мало фильмов", если от 10 до 30 - "Вы классический зритель", а если больше - 
-"Вы киноман". А если не подошло ни к одному варианту - "Произошла ошибка"
-
-4) Потренироваться и переписать цикл еще двумя способами*/
-
-'use strict';
-
-// Код возьмите из предыдущего домашнего задания
-'use strict';
-
-const numberOfFilms = prompt('Сколько фильмов вы уже посмотрели?', '');
-
-const personalMovieDB = {
-    count: numberOfFilms,
-    movies: {},
-    actors: {},
-    genres: [],
-    privat: false
-};
-for (let i = 0; i < 2; i++) {
-    const a = prompt('Один из последних просмотренных фильмов',''),
-          b = prompt('На сколько оцените его ?','');
-    if (a != null && b !=null && a != ''&& b != ''&& a.length<50 && b.length<50){
-        personalMovieDB.movies[a] = b;
-        console.log('Все ОК !')
-    }else {
-        console.log('ERROR');
-        i--;
+function getMathResult(a,b) {
+    let result = '';
+    if (b === 0 || b<0 || typeof b === 'string') {
+        result = a;
     }
+    else if (typeof a === 'number' && typeof b === 'number') {
+        for (let i = 1; i < b + 1; i++) {
+            result += `${a * i}`;
+            if (i !== b) {
+                result += '---';
+            }
+        }
+    }
+    return result;
 }
 
-if (personalMovieDB.count<10){console.log('Мало фильмов');}
-else if (personalMovieDB.count >=10 && personalMovieDB.count <= 30) {console.log('Ниче так');}
-else if (personalMovieDB.count > 10){console.log('Да вы гурман, Сер');}
-else {console.log('ERROR')};
-console.log(personalMovieDB);
-
+console.log(getMathResult(10,'f'));
