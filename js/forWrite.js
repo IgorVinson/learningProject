@@ -1,22 +1,15 @@
-let result = '';
-let lines = 5;
-for (let i = 0; i <= lines; i++) {
-    for (let j = 0; j <lines - i; j++) {
-        result +=' '; }
-    for (let j = 0; j < (2*i + 1); j++) {
-        result += '*'
-    }
-    result += '\n';
+function getTimeFromMinutes(t) {
+	if(Math.floor(t / 60) === 1){
+		return `Это ${Math.floor(t / 60)} час и ${t - Math.floor(t / 60) * 60} минут`;
+	}
+	else if(Math.floor(t / 60) === 2 || Math.floor(t / 60) === 3|| Math.floor(t / 60) === 4){
+		return `Это ${Math.floor(t / 60)} часа и ${t - Math.floor(t / 60) * 60} минут`;
+	}
+	else if (typeof (t) === 'number' && t >= 0 && Number.isInteger(t) === true) {
+		return `Это ${Math.floor(t / 60)} часов и ${t - Math.floor(t / 60) * 60} минут`;
+	}
+	else return 'Ошибка, проверьте данные';
 }
-console.log(result);
 
 
-
-
-
-//     *
-//    ***
-//   *****
-//  *******
-// *********
-//***********
+console.log(getTimeFromMinutes(12.5));
